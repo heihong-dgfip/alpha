@@ -1,0 +1,47 @@
+/*
+ * DSFR v1.0.0 | SPDX-License-Identifier: MIT | License-Filename: LICENCE.md | restricted use (see terms and conditions)
+ */
+@charset "UTF-8";
+
+/* ------------------------------------ *\
+  GRID
+\* ------------------------------------ */
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+:host {
+  display: block;
+}
+
+:host(:not([fluid])) {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+:host([fluid]) {
+  padding-left: 0;
+  padding-right: 0;
+  max-width: none;
+}
+
+@media (min-width: 62em) {
+  :host(:not([fluid])) {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 78em) {
+  :host(:not([fluid])) {
+    max-width: 78rem;
+  }
+}
+
+:host([full-height]) {
+  height: 100%;
+}

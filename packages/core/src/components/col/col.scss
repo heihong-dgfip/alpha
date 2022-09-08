@@ -1,0 +1,117 @@
+/*
+ * DSFR v1.0.0 | SPDX-License-Identifier: MIT | License-Filename: LICENCE.md | restricted use (see terms and conditions)
+ */
+@charset "UTF-8";
+
+/* ------------------------------------ *\
+  GRID
+\* ------------------------------------ */
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+:host {
+  display: block;
+  flex: 1;
+}
+
+:host([align="top"]) {
+  align-self: flex-start;
+}
+
+:host([align="bottom"]) {
+  align-self: flex-end;
+}
+
+:host([align="middle"]) {
+  align-self: center;
+}
+
+@for $i from 1 through 12 {
+  :host([width="#{$i}"]) {
+    flex: 0 0 calc(#{100 * $i}% / 12);
+    width: calc(#{100 * $i}% / 12);
+    max-width: calc(#{100 * $i}% / 12);
+  }
+  
+  :host([offset="#{$i}"]:not([offset-right])) {
+    margin-left: calc(#{100 * $i}% / 12);
+  }
+  
+  :host([offset-right="#{$i}"]) {
+    margin-right: calc(#{100 * $i}% / 12);
+  }
+}
+
+@media (min-width: 36em) {
+  @for $i from 1 through 12 {
+    :host([width-sm="#{$i}"]) {
+      flex: 0 0 calc(#{100 * $i}% / 12);
+      width: calc(#{100 * $i}% / 12);
+      max-width: calc(#{100 * $i}% / 12);
+    }
+    
+    :host([offset-sm="#{$i}"]:not([offset-right])) {
+      margin-left: calc(#{100 * $i}% / 12);
+    }
+    
+    :host([offset-right-sm="#{$i}"]) {
+      margin-right: calc(#{100 * $i}% / 12);
+    }
+  }
+}
+
+@media (min-width: 48em) {
+  @for $i from 1 through 12 {
+    :host([width-md="#{$i}"]) {
+      flex: 0 0 calc(#{100 * $i}% / 12);
+      width: calc(#{100 * $i}% / 12);
+      max-width: calc(#{100 * $i}% / 12);
+    }
+    
+    :host([offset-md="#{$i}"]:not([offset-right])) {
+      margin-left: calc(#{100 * $i}% / 12);
+    }
+    
+    :host([offset-right-md="#{$i}"]) {
+      margin-right: calc(#{100 * $i}% / 12);
+    }
+  }
+}
+
+@media (min-width: 62em) {
+  @for $i from 1 through 12 {
+    :host([width-lg="#{$i}"]) {
+      flex: 0 0 calc(#{100 * $i}% / 12);
+      width: calc(#{100 * $i}% / 12);
+      max-width: calc(#{100 * $i}% / 12);
+    }
+    
+    :host([offset-lg="#{$i}"]:not([offset-right])) {
+      margin-left: calc(#{100 * $i}% / 12);
+    }
+    
+    :host([offset-right-lg="#{$i}"]) {
+      margin-right: calc(#{100 * $i}% / 12);
+    }
+  }
+}
+
+@media (min-width: 78em) {
+  @for $i from 1 through 12 {
+    :host([width-xl="#{$i}"]) {
+      flex: 0 0 calc(#{100 * $i}% / 12);
+      width: calc(#{100 * $i}% / 12);
+      max-width: calc(#{100 * $i}% / 12);
+    }
+    
+    :host([offset-xl="#{$i}"]:not([offset-right])) {
+      margin-left: calc(#{100 * $i}% / 12);
+    }
+    
+    :host([offset-right-xl="#{$i}"]) {
+      margin-right: calc(#{100 * $i}% / 12);
+    }
+  }
+}

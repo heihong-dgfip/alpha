@@ -1,0 +1,230 @@
+/*
+ * DSFR v1.0.0-rc1.0 | restricted use
+ */
+@charset "UTF-8";
+
+/* ------------------------------------ *\
+  SELECTS
+\* ------------------------------------ */
+
+/* ------------------------------------ *\
+  Reset
+\* ------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+*:focus,
+*:focus-visible {
+  z-index: 2000;
+}
+
+/* ------------------------------------ *\
+  Utils
+\* ------------------------------------ */
+
+.fr-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  /* added line */
+  border: 0;
+}
+
+/* ------------------------------------ *\
+  fr-select
+\* ------------------------------------ */
+
+:host {
+  /**
+   * @prop --fr-select-background-image: Background image of the select
+   */
+  --data-uri-svg: var(--fr-select-background-image, url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 24 24' ><path fill='%231e1e1e' d='M12,13.1l5-4.9l1.4,1.4L12,15.9L5.6,9.5l1.4-1.4L12,13.1z'/></svg>"));
+  /**
+   * @prop --fr-select-background-image-disabled: Background image of the select disabled
+   */
+  --data-uri-svg-disabled: var(--fr-select-background-image-disabled, url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' x='0px' y='0px' viewBox='0 0 24 24' ><path fill='%236a6a6a' d='M12,13.1l5-4.9l1.4,1.4L12,15.9L5.6,9.5l1.4-1.4L12,13.1z'/></svg>"););
+  /**
+   * @prop --label-color: Color of the label
+   */
+  --label-color: var(--g800);
+
+  display: block;
+  width: 100%;
+}
+
+:host(:not(:last-of-type)) {
+  margin-bottom: 1.5rem;
+}
+
+/* ------------------------------------ *\
+  Native input
+\* ------------------------------------ */
+
+select {
+  outline-offset: 2px;
+  outline-width: 2px;
+}
+
+select:focus {
+  outline-style: solid;
+}
+
+select:focus:not(:focus-visible) {
+  outline-style: none;
+}
+
+select:focus-visible {
+  outline-style: solid;
+}
+
+select:enabled {
+  cursor: pointer;
+}
+
+select:disabled {
+  outline-style: none;
+}
+
+select:disabled {
+  cursor: not-allowed;
+}
+
+input, select, textarea {
+  font-family: "Marianne", arial, sans-serif;
+  text-rendering: optimizeSpeed;
+}
+
+select {
+  outline-color: var(--focus);
+}
+
+/* ------------------------------------ *\
+  .fr-select-group
+\* ------------------------------------ */
+
+.fr-select-group .fr-label .fr-hint-text,
+.fr-input-group .fr-label .fr-hint-text {
+  margin-top: 0.25rem;
+  margin-bottom: 0.5rem;
+}
+
+.fr-select-group--valid .fr-label, .fr-input-group--valid .fr-label {
+  color: var(--success);
+}
+
+.fr-select-group--error .fr-label, .fr-input-group--error .fr-label {
+  color: var(--error);
+}
+
+.fr-select-group--disabled .fr-label, .fr-input-group--disabled .fr-label {
+  color: var(--g600-g400);
+}
+
+/* ------------------------------------ *\
+  .fr-select
+\* ------------------------------------ */
+
+.fr-select {
+  display: block;
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  width: 100%;
+  border: 0;
+  border-radius: 0.25rem 0.25rem 0 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: 0.5rem 2.5rem 0.5rem 1rem;
+  background-repeat: no-repeat;
+  background-position: calc(100% - 0.5rem) 50%;
+  background-size: 1.5rem 1.5rem;
+}
+
+.fr-select {
+  color: var(--g800);
+  background-color: var(--g200);
+  box-shadow: inset 0 -2px 0 0 var(--g600);
+  background-image: var(--data-uri-svg);
+  /**
+   * Modificateur pour gérer l'état d'erreur
+   *//**
+   * Modificateur pour gérer l'état de validation
+   *//**
+   * Mixin pour gérer l'état disabled
+   */
+}
+
+.fr-select--error {
+  box-shadow: inset 0 -2px 0 0 var(--error);
+}
+
+.fr-select--valid {
+  box-shadow: inset 0 -2px 0 0 var(--success);
+}
+
+select.fr-select[disabled], select.fr-select:disabled {
+  color: var(--g600-g400);
+  box-shadow: inset 0 -2px 0 0 var(--g400);
+  /**
+       * Override de l'opacité chrome sur un élément disabled
+       */
+  opacity: 1;
+  background-image: var(--data-uri-svg-disabled);
+}
+
+.fr-select:-webkit-autofill, .fr-select:-webkit-autofill:hover,
+.fr-select:-webkit-autofill:focus {
+  box-shadow: inset 0 0 0 100px var(--g200);
+  -webkit-text-fill-color: var(--g800);
+}
+
+/* ------------------------------------ *\
+  fr-label
+\* ------------------------------------ */
+
+.fr-label {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.fr-label + .fr-input, .fr-label + .fr-select {
+  margin-top: 0.5rem;
+}
+
+.fr-hint-text {
+  display: block;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.fr-hint-text + .fr-input, .fr-hint-text + .fr-input-wrap,
+.fr-hint-text + .fr-select {
+  margin-top: 0.5rem;
+}
+
+.fr-label {
+  color: var(--label-color);
+  /**
+   * Modificateur au niveau du label pour appliquer un état d'erreur au label
+   */
+}
+
+.fr-hint-text {
+  color: var(--g600);
+}
+
+/* ------------------------------------ *\
+  slot
+\* ------------------------------------ */

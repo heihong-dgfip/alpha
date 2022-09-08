@@ -1,0 +1,73 @@
+{
+  "name": "@dgfip/dsfr-core",
+  "version": "1.0.0-alpha.6",
+  "description": "Librairie de composants web (Web components) pour le système de design",
+  "keywords": [
+    "dsfr",
+    "framework",
+    "système de design"
+  ],
+  "main": "dist/index.cjs.js",
+  "module": "dist/custom-elements/index.js",
+  "es2015": "dist/esm/index.mjs",
+  "es2017": "dist/esm/index.mjs",
+  "types": "dist/custom-elements/index.d.ts",
+  "collection": "dist/collection/collection-manifest.json",
+  "collection:main": "dist/collection/index.js",
+  "unpkg": "dist/dsfr-core/dsfr-core.esm.js",
+  "files": [
+    "dist/",
+    "loader/"
+  ],
+  "scripts": {
+    "build-stencil": "stencil build --docs",
+    "start": "stencil build --watch --serve",
+    "test": "stencil test --spec",
+    "coverage": "stencil test --spec --coverage",
+    "test.watch": "stencil test --spec --e2e --watchAll",
+    "generate": "stencil generate",
+    "storybook": "start-storybook -p 6006 -s dist",
+    "build-storybook": "build-storybook",
+    "build": "yarn build-stencil && yarn build-storybook",
+    "cypress-run": "cypress run",
+    "cypress-open": "cypress open"
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      "@semantic-release/npm",
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "package.json"
+          ]
+        }
+      ],
+      [
+        "@semantic-release/exec",
+        {
+          "publishCmd": "mvn clean deploy -Dsettings.security=$MAVEN_SETTINGS_SECURITY -Ddsfr-core.version=${nextRelease.version}"
+        }
+      ]
+    ]
+  },
+  "devDependencies": {
+    "@stencil/sass": "1.5.2"
+  },
+  "dependenciesComments": {
+    "cypress": "8.7.0"
+  },
+  "author": "Direction Générale des Finances Publiques",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://forge.dgfip.finances.rie.gouv.fr/dgfip/dtnum/pole-exp-utilisateur/ux-access/dsfr.git"
+  },
+  "dependencies": {
+    "@stencil/core": "2.11.0"
+  }
+}

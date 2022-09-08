@@ -1,0 +1,402 @@
+/*
+ * DSFR v1.0.0-rc1.0 | restricted use
+ */
+@charset "UTF-8";
+
+/* ------------------------------------ *\
+  Radios
+\* ------------------------------------ */
+
+/* ------------------------------------ *\
+  Reset
+\* ------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+*:focus,
+*:focus-visible {
+  z-index: 2000;
+}
+
+/* ------------------------------------ *\
+  fr-radio-group
+\* ------------------------------------ */
+
+:host {
+  /**
+   * @prop --radio-display: Display of radios
+   */
+  --radio-display: block;
+  /**
+   * @prop --first-radio-margin-top: Margin top of the first radio
+   */
+  --first-radio-margin-top: -0.75rem;
+  /**
+   * @prop --last-radio-margin-bottom: Margin bottom of the last radio
+   */
+  --last-radio-margin-bottom: -0.75rem;
+  /**
+   * @prop --radio-label-margin-top: Label margin top of radios
+   */
+  --radio-label-margin-top: initial;
+  /**
+   * @prop --radio-label-margin-bottom: Label margin bottom of radios
+   */
+  --radio-label-margin-bottom: initial;
+  /**
+   * @prop --not-last-radio-label-margin-right: Label margin right of radios other than the last
+   */
+  --not-last-radio-label-margin-right: initial;
+  /**
+   * @prop --not-last-radio-label-margin-bottom: Label margin bottom of radios other than the last
+   */
+  --not-last-radio-label-margin-bottom: initial;
+  /**
+   * @prop --first-radio-label-margin-top: Label margin top of the first radio
+   */
+  --first-radio-label-margin-top: 0;
+  /**
+   * @prop --last-radio-label-margin-bottom: Label margin bottom of the last radio
+   */
+  --last-radio-label-margin-bottom: initial;
+  /**
+   * @prop --label-color: Color of the label
+   */
+  --label-color: var(--g800);
+
+  display: var(--display, block);
+  align-items: var(--align-items, initial);
+  justify-content: var(--justify-content, initial);
+  flex-wrap: var(--flex-wrap, initial);
+}
+
+//.fr-radio-group:last-child input[type="radio"] + label[style*='background-image:'],
+//.fr-radio-group:last-child input[type="radio"] + label[class^="fr-ifi-"],
+//.fr-radio-group:last-child input[type="radio"] + label[class*=" fr-ifi-"]
+:host([rich]) {
+  --last-radio-label-margin-bottom: 1.5rem;
+}
+
+/* ------------------------------------ *\
+  Native input
+\* ------------------------------------ */
+
+input {
+  outline-offset: 2px;
+  outline-width: 2px;
+}
+
+input:focus {
+  outline-style: solid;
+}
+
+input:focus:not(:focus-visible) {
+  outline-style: none;
+}
+
+input:focus-visible {
+  outline-style: solid;
+}
+
+input:disabled {
+  outline-style: none;
+}
+
+input:disabled {
+  cursor: not-allowed;
+}
+
+input[type="checkbox"] + label::before, input[type="radio"] + label::before {
+  outline-offset: 2px;
+  outline-width: 2px;
+}
+
+input[type="checkbox"]:focus + label::before,
+input[type="radio"]:focus + label::before {
+  outline-style: solid;
+}
+
+input[type="checkbox"]:focus:not(:focus-visible) + label::before,
+input[type="radio"]:focus:not(:focus-visible) + label::before {
+  outline-style: none;
+}
+
+input[type="checkbox"]:focus-visible + label::before,
+input[type="radio"]:focus-visible + label::before {
+  outline-style: solid;
+}
+
+input[type="checkbox"]:enabled, input[type="checkbox"]:enabled + label,
+input[type="radio"]:enabled, input[type="radio"]:enabled + label {
+  cursor: pointer;
+}
+
+input[type="checkbox"]:disabled + label::before,
+input[type="radio"]:disabled + label::before {
+  outline-style: none;
+}
+
+input[type="checkbox"]:disabled, input[type="checkbox"]:disabled + label,
+input[type="radio"]:disabled, input[type="radio"]:disabled + label {
+  cursor: not-allowed;
+}
+
+input, select, textarea {
+  font-family: "Marianne", arial, sans-serif;
+  text-rendering: optimizeSpeed;
+}
+
+input {
+  outline-color: var(--focus);
+}
+
+input[type="checkbox"] + label::before, input[type="radio"] + label::before {
+  outline-color: var(--focus);
+}
+
+/* ------------------------------------ *\
+  .fr-radio-group
+\* ------------------------------------ */
+
+.fr-radio-group {
+  display: var(--radio-display);
+}
+
+.fr-radio-group input[type="radio"] + label {
+  margin-top: var(--radio-label-margin-top);
+  margin-bottom: var(--radio-label-margin-bottom);
+}
+
+.fr-radio-group:not(:last-of-type) input[type="radio"] + label {
+  margin-right: var(--not-last-radio-label-margin-right);
+  margin-bottom: var(--not-last-radio-label-margin-bottom);
+}
+
+.fr-radio-group:first-of-type {
+  margin-top: var(--first-radio-margin-top);
+}
+
+.fr-radio-group:first-of-type input[type="radio"] + label {
+  margin-top: var(--first-radio-label-margin-top);
+}
+
+.fr-radio-group:last-of-type {
+  margin-bottom: var(--last-radio-margin-bottom);
+}
+
+.fr-radio-group:last-of-type input[type="radio"] + label {
+  margin-bottom: var(--last-radio-label-margin-bottom);
+}
+
+.fr-radio-group input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  /**
+     * On applique un display grid sur le label afin de gérer le positionnement des élements
+     *//**
+     * On applique les styles au pseudo élément before du label quand l'input présente
+     * un état check
+     */
+}
+
+.fr-radio-group input[type="radio"] + label {
+  position: relative;
+  padding: 0.75rem 0;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  /**
+       * Style du texte d'aide dans le label
+       *//**
+       * On utilise un pseudo element before pour customiser l'aspect du bouton radio
+       */
+}
+
+.fr-radio-group input[type="radio"] + label .fr-hint-text {
+  margin: 0;
+  width: 100%;
+  margin-left: 2rem;
+}
+
+.fr-radio-group input[type="radio"] + label::before {
+  content: "";
+  display: inline-block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  flex-shrink: 0;
+  border: 1px solid;
+  border-radius: 50%;
+  transform-origin: center;
+}
+
+//.fr-radio-group input[type="radio"]:checked + label[style*='background-image:'],
+//.fr-radio-group input[type="radio"]:checked + label[class^="fr-ifi-"],
+//.fr-radio-group input[type="radio"]:checked + label[class*=" fr-ifi-"] {
+:host([rich]) .fr-radio-group input[type="radio"]:checked + label {
+  width: 100%;
+}
+
+.fr-radio-group--sm input[type="radio"] + label::before {
+  width: 1rem;
+  height: 1rem;
+}
+
+.fr-radio-group--sm input[type="radio"] + label .fr-hint-text {
+  margin-left: 1.5rem;
+}
+
+.fr-radio-rich input[type="radio"] + .fr-label {
+  padding-left: 3.5rem;
+  min-height: 5.5rem;
+  width: 100%;
+  height: 1px;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  padding-right: 6.5rem;
+  background-position: calc(100% - 0.25rem) center;
+  background-size: 5rem 5rem;
+  background-repeat: no-repeat;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  /**
+      * On applique la taille sm pour le bouton radio riche
+      *//**
+      * On délimite l'espace pour l'image de droite et une icône illustrative par défaut
+      */
+}
+
+.fr-radio-rich input[type="radio"] + .fr-label::before {
+  width: 1rem;
+  height: 1rem;
+  position: absolute;
+  left: 1.75rem;
+}
+
+.fr-radio-rich input[type="radio"] + .fr-label::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 0.25rem;
+  padding-left: 0.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5.25rem;
+  height: 5rem;
+  vertical-align: middle;
+}
+
+.fr-radio-rich input[type="radio"] + .fr-label .fr-hint-text {
+  margin-left: 0;
+}
+
+.fr-radio-rich__icon {
+  width: 5rem;
+  height: 5rem;
+  position: absolute;
+  right: 0.25rem;
+  object-fit: cover;
+  border-left: 1px solid var(--g300);
+}
+
+.fr-radio-group input[type="radio"]:checked + label::before {
+  box-shadow: inset 0 0 0 5px var(--w);
+  background-color: var(--bf500);
+  border: 1px solid var(--bf500);
+}
+
+.fr-radio-group input[type="radio"][disabled] + label,
+.fr-radio-group input[type="radio"]:disabled + label {
+  color: var(--g600-g400);
+}
+
+.fr-radio-group input[type="radio"][disabled] + label::before,
+.fr-radio-group input[type="radio"]:disabled + label::before {
+  background-color: var(--g200);
+  border: 1px solid var(--g400);
+}
+
+.fr-radio-group--sm input[type="radio"]:checked + label::before {
+  box-shadow: inset 0 0 0 3px var(--w);
+}
+
+.fr-radio-rich input[type="radio"] + .fr-label::after {
+  border-left: 1px solid var(--g300);
+}
+
+.fr-radio-rich input[type="radio"]:not(:checked) + label {
+  box-shadow: inset 0 0 0 1px var(--g300);
+  background-color: var(--w);
+}
+
+.fr-radio-rich input[type="radio"]:checked + label {
+  background-color: var(--w);
+  box-shadow: inset 0 0 0 1px var(--bf500);
+}
+
+.fr-radio-rich input[type="radio"]:checked + label::before {
+  box-shadow: inset 0 0 0 3px var(--w);
+}
+
+.fr-radio-rich input[type="radio"][disabled] + label,
+.fr-radio-rich input[type="radio"]:disabled + label {
+  color: var(--g600-g400);
+  filter: grayscale(1);
+}
+
+.fr-radio-rich input[type="radio"][disabled] + label::before,
+.fr-radio-rich input[type="radio"]:disabled + label::before {
+  background-color: var(--g200);
+  border: 1px solid var(--g400);
+}
+
+.fr-radio-rich input[type="radio"][disabled] + label::after,
+.fr-radio-rich input[type="radio"]:disabled + label::after {
+  background-color: transparent;
+}
+
+/* ------------------------------------ *\
+  .fr-label
+\* ------------------------------------ */
+
+.fr-label {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.fr-label {
+  color: var(--label-color);
+  /**
+   * Modificateur au niveau du label pour appliquer un état d'erreur au label
+   */
+}
+
+/* ------------------------------------ *\
+  .fr-hint-text
+\* ------------------------------------ */
+
+.fr-hint-text {
+  display: block;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.fr-hint-text {
+  color: var(--g600);
+}

@@ -1,0 +1,69 @@
+/*
+ * DSFR v1.0.0 | SPDX-License-Identifier: MIT | License-Filename: LICENCE.md | restricted use (see terms and conditions)
+ */
+@charset "UTF-8";
+
+/* ------------------------------------ *\
+  HEADER
+\* ------------------------------------ */
+*, ::before, ::after {
+    box-sizing: inherit;
+}
+
+fr-link {
+    border-right: none;
+    border-bottom: 1px solid var(--g400);
+    font-size: 0.875rem;
+}
+
+.fr-links-group li:last-child{
+   fr-link {
+        border: none;
+    }
+}
+
+.fr-header__tools-links fr-link {
+  margin-left: 0.25rem;
+  margin-right: 0.25rem;
+}
+
+
+@media (min-width: 62em) {
+  fr-link {
+    border-bottom: none;
+    border-right: 1px solid var(--g400);
+
+  }
+  .fr-header__tools-links .fr-links-group {
+    display: flex;
+  }
+
+  .fr-header__tools-links{
+    display: flex;
+    justify-content: flex-end;
+  }
+ 
+}
+
+
+ul {
+  margin: 0;
+  padding: 0;
+  margin-block-start: var(--xl-block);
+  margin-block-end: var(--xl-block);
+  --xl-size: var(--xl-base);
+}
+
+ul {
+  list-style-type: none;
+  padding-inline-start: var(--ul-start);
+}
+
+ul > li::marker {
+  font-size: calc(var(--xl-size) * 0.9);
+}
+
+li {
+  --xl-base: calc(var(--xl-size) * 0.9);
+  padding-bottom: var(--li-bottom);
+}

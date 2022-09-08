@@ -1,0 +1,35 @@
+# fr-icon
+
+
+
+<!-- Auto Generated Below -->
+
+
+## Properties
+
+| Property            | Attribute | Description | Type                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   | Default     |
+| ------------------- | --------- | ----------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- |
+| `name` _(required)_ | `name`    |             | `"account-fill" \| "account-line" \| "add-circle-line" \| "add-line" \| "alert-fill" \| "alert-line" \| "arrow-down-line" \| "arrow-down-s-line" \| "arrow-left-line" \| "arrow-left-s-first-line" \| "arrow-left-s-line-double" \| "arrow-left-s-line" \| "arrow-right-line" \| "arrow-right-s-last-line" \| "arrow-right-s-line-double" \| "arrow-right-s-line" \| "arrow-right-up-line" \| "arrow-up-line" \| "arrow-up-s-line" \| "calendar-fill" \| "calendar-line" \| "check-line" \| "checkbox-circle-fill" \| "checkbox-circle-line" \| "close-circle-fill" \| "close-circle-line" \| "close-line" \| "delete-fill" \| "delete-line" \| "download-line" \| "edit-fill" \| "edit-line" \| "error-warning-fill" \| "error-warning-line" \| "external-link-line" \| "eye-line" \| "eye-off-line" \| "facebook-circle-fill" \| "file-download-fill" \| "file-download-line" \| "file-fill" \| "file-line" \| "file-pdf-fill" \| "file-pdf-line" \| "information-fill" \| "information-line" \| "instagram-fill" \| "linkedin-box-fill" \| "lock-fill" \| "lock-line" \| "mail-fill" \| "mail-line" \| "menu-2-fill" \| "menu-fill" \| "pause-circle-fill" \| "pause-circle-line" \| "play-fill" \| "play-line" \| "printer-fill" \| "printer-line" \| "question-fill" \| "question-line" \| "refresh-fill" \| "refresh-line" \| "save-fill" \| "save-line" \| "search-fill" \| "search-line" \| "subtract-line" \| "theme-fill" \| "twitter-fill" \| "user-fill" \| "user-line" \| "volume-down-fill" \| "volume-down-line" \| "volume-mute-fill" \| "volume-mute-line" \| "volume-up-fill" \| "volume-up-line" \| "youtube-fill"` | `undefined` |
+| `size`              | `size`    |             | `"lg" \| "md" \| "sm"`                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 | `undefined` |
+
+
+## Dependencies
+
+### Used by
+
+ - [fr-header](../header)
+ - [fr-header-tools-links](../header/header-tools)
+ - [fr-modal](../modal)
+
+### Graph
+```mermaid
+graph TD;
+  fr-header --> fr-icon
+  fr-header-tools-links --> fr-icon
+  fr-modal --> fr-icon
+  style fr-icon fill:#f9f,stroke:#333,stroke-width:4px
+```
+
+----------------------------------------------
+
+*Built with [StencilJS](https://stenciljs.com/)*

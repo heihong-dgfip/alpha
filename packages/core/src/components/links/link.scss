@@ -1,0 +1,368 @@
+/*
+ * DSFR v1.0.0-rc1.0 | restricted use
+ */
+@charset "UTF-8";
+
+/* ------------------------------------ *\
+  LINKS
+\* ------------------------------------ */
+
+/* ------------------------------------ *\
+  fr-select
+\* ------------------------------------ */
+
+:host {
+  /**
+   * @prop --color-hover: Hover color of link, default to `--fr-link-color-hover`
+   */
+  --color-hover: var(--fr-link-color-hover, rgba(224, 224, 224, 0.5));
+  /**
+   * @prop --color-active: Active color of link, default to `--fr-link-color-active`
+   */
+  --color-active: var(--fr-link-color-active, rgba(194, 194, 194, 0.5));
+  /**
+   * @prop --color-chip: Color of a chip link
+   */
+  --color-chip: var(--bf500);
+
+  --cursor-not-href: not-allowed;
+
+  display: inline;
+}
+
+/* ------------------------------------ *\
+  Reset
+\* ------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+*:focus,
+*:focus-visible {
+  z-index: 2000;
+}
+
+/* ------------------------------------ *\
+  Native link
+\* ------------------------------------ */
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+[href] {
+  box-shadow: var(--link-underline);
+}
+
+[target="_blank"]::after {
+  content: var(--link-blank-content);
+  font: var(--link-blank-font);
+}
+
+a {
+  outline-offset: 2px;
+  outline-width: 2px;
+}
+
+a:focus {
+  outline-style: solid;
+}
+
+a:focus:not(:focus-visible) {
+  outline-style: none;
+}
+
+a:focus-visible {
+  outline-style: solid;
+}
+
+a {
+  cursor: pointer;
+}
+
+a:not([href]) {
+  outline-style: none;
+}
+
+a:not([href]) {
+  cursor: var(--cursor-not-href);
+}
+
+a {
+  outline-color: var(--focus);
+}
+
+/* ------------------------------------ *\
+  .fr-link
+\* ------------------------------------ */
+
+.fr-link {
+  --link-underline: none;
+  --link-blank-font: none;
+  --link-blank-content: none;
+  margin: 0;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 1;
+}
+
+.fr-link {
+  font-size: 1rem;
+  line-height: 1.5rem;
+  min-height: 2rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+}
+
+.fr-link {
+  color: var(--color-chip);
+  background-color: var(--t-plain);
+}
+
+a.fr-link:not([href]) {
+  color: var(--g600-g400);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a.fr-link[href]:hover {
+    background-image: linear-gradient(0deg, var(--color-hover), var(--color-hover));
+  }
+
+  a.fr-link[href]:active {
+    background-image: linear-gradient(0deg, var(--color-active), var(--color-active));
+  }
+}
+
+/* ------------------------------------ *\
+  icon
+\* ------------------------------------ */
+
+.fr-link--icon-only {
+  //flex-direction: row;
+  overflow: hidden;
+  max-width: 2rem;
+  max-height: 2rem;
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+::slotted(fr-icon[slot="icon-only"]) {
+  margin-left: 0;
+  margin-right: 0.25rem;
+  --font-size: 1.5rem;
+}
+
+.fr-link--icon-left {
+  //flex-direction: row;
+  overflow: initial;
+  max-width: none;
+  max-height: none;
+}
+
+::slotted(fr-icon[slot="left"]) {
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+  --font-size: 1rem;
+}
+
+.fr-link--icon-right {
+  //flex-direction: row-reverse;
+  overflow: initial;
+  max-width: none;
+  max-height: none;
+}
+
+::slotted(fr-icon[slot="right"]) {
+  margin-right: -0.25rem;
+  margin-left: 0.5rem;
+  --font-size: 1rem;
+}
+
+/* ------------------------------------ *\
+  edge cases
+\* ------------------------------------ */
+
+.fr-raw-link {
+  --link-underline: none;
+  --link-blank-font: none;
+  --link-blank-content: none;
+}
+
+.fr-reset-link {
+  --link-underline: none;
+  --link-blank-font: none;
+  --link-blank-content: none;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ------------------------------------ *\
+  align on content
+\* ------------------------------------ */
+
+.fr-link--align-on-content {
+  margin-left: -0.75rem;
+  margin-right: -0.75rem;
+
+  &.fr-link--icon-only {
+    margin-left: -0.25rem;
+    margin-right: -0.25rem;
+  }
+
+  &.fr-link--icon-left {
+    margin-left: -0.5rem;
+    margin-right: -0.75rem;
+  }
+
+  &.fr-link--icon-right {
+    margin-left: -0.75rem;
+    margin-right: -0.5rem;
+  }
+}
+
+/* ------------------------------------ *\
+  sizes
+\* ------------------------------------ */
+
+.fr-link--sm {
+  font-size: 0.875rem;
+  line-height: 1.5rem;
+  min-height: 2rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+
+  &.fr-link--align-on-content {
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+
+    &.fr-link--icon-only {
+      margin-left: -0.5rem;
+      margin-right: -0.5rem;
+    }
+
+    &.fr-link--icon-left {
+      margin-left: -0.5rem;
+      margin-right: -0.75rem;
+    }
+
+    &.fr-link--icon-right {
+      margin-left: -0.75rem;
+      margin-right: -0.5rem;
+    }
+  }
+
+  &.fr-link--icon-only {
+    //flex-direction: row;
+    overflow: hidden;
+    max-width: 2rem;
+    max-height: 2rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  &.fr-link--icon-left {
+    //flex-direction: row;
+    overflow: initial;
+    max-width: none;
+    max-height: none;
+  }
+
+  &.fr-link--icon-right {
+    //flex-direction: row-reverse;
+    overflow: initial;
+    max-width: none;
+    max-height: none;
+  }
+}
+
+:host([size="sm"]) ::slotted(fr-icon[slot="icon-only"]) {
+  margin-left: 0;
+  margin-right: 0.5rem;
+  --font-size: 1rem;
+}
+
+:host([size="sm"]) ::slotted(fr-icon[slot="left"]) {
+  margin-left: -0.25rem;
+  margin-right: 0.5rem;
+  --font-size: 1rem;
+}
+
+:host([size="sm"]) ::slotted(fr-icon[slot="right"]) {
+  margin-right: -0.25rem;
+  margin-left: 0.5rem;
+  --font-size: 1rem;
+}
+
+.fr-link--lg {
+  font-size: 1.25rem;
+  line-height: 2rem;
+  min-height: 3rem;
+  padding: 0.5rem 1rem;
+  border-radius: 1.5rem;
+
+  &.fr-link--align-on-content {
+    margin-left: -1rem;
+    margin-right: -1rem;
+
+    &.fr-link--icon-only {
+      margin-left: -0.5rem;
+      margin-right: -0.5rem;
+    }
+
+    &.fr-link--icon-left {
+      margin-left: -0.625rem;
+      margin-right: -1rem;
+    }
+
+    &.fr-link--icon-right {
+      margin-left: -1rem;
+      margin-right: -0.625rem;
+    }
+  }
+
+  &.fr-link--icon-only {
+    //flex-direction: row;
+    overflow: hidden;
+    max-width: 3rem;
+    max-height: 3rem;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  &.fr-link--icon-left {
+    //flex-direction: row;
+    overflow: initial;
+    max-width: none;
+    max-height: none;
+  }
+
+  &.fr-link--icon-right {
+    //flex-direction: row-reverse;
+    overflow: initial;
+    max-width: none;
+    max-height: none;
+  }
+}
+
+:host([size="lg"]) ::slotted(fr-icon[slot="icon-only"]) {
+  margin-left: 0;
+  margin-right: 0.5rem;
+  --font-size: 2rem;
+}
+
+:host([size="lg"]) ::slotted(fr-icon[slot="left"]) {
+  margin-left: -0.375rem;
+  margin-right: 0.5rem;
+  --font-size: 1.5rem;
+}
+
+:host([size="lg"]) ::slotted(fr-icon[slot="right"]) {
+  margin-right: -0.375rem;
+  margin-left: 0.5rem;
+  --font-size: 1.5rem;
+}

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="fr" data-fr-theme="light" data-fr-scheme="system">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <link rel="apple-touch-icon" href="/build/apple-touch-icon.png" />
+    <!-- 180×180 -->
+    <link rel="icon" href="/build/favicon.svg" type="image/svg+xml" />
+    <link rel="shortcut icon" href="/build/favicon.ico" type="image/x-icon" />
+    <!-- 32×32 -->
+    <link rel="manifest" href="/build/manifest.webmanifest" crossorigin="use-credentials" />
+    <!-- Modifier les chemins relatifs des favicons en fonction de la structure du projet -->
+    <!-- Dans le fichier manifest.webmanifest aussi, modifier les chemins vers les images -->
+
+    <title>Test web components</title>
+
+    <script type="module" src="/build/dsfr-core.esm.js"></script>
+    <script nomodule src="/build/dsfr-core.js"></script>
+  </head>
+  <body>
+    <fr-app>
+      <fr-tile href="#" title-type="h2" titre="Mon titre h2">
+        <img slot="img" src="/build/apple-touch-icon.png" />
+        <p slot="desc">La description de ma tuile: tuile verticale avec contenu et image</p>
+      </fr-tile>
+      <fr-tile href="#" title-type="h1" titre="Mon titre h1" horizontal>
+        <img slot="img" src="/build/apple-touch-icon.png" />
+        <p slot="desc">La description de ma tuile: tuile horizontale avec contenu et image</p>
+      </fr-tile>
+      <fr-tile href="#" title-type="h2" titre="Mon titre h2" enlarge-link>
+        <img slot="img" src="/build/apple-touch-icon.png" />
+        <p slot="desc">La description de ma tuile: tuile verticale avec contenu et image et lien elargi</p>
+      </fr-tile>
+      <fr-tile href="#" title-type="h5" titre="Mon titre h5" enlarge-link horizontal>
+        <img slot="img" src="/build/apple-touch-icon.png" />
+        <p slot="desc">La description de ma tuile: tuile horizontal avec contenu et image et lien elargi</p>
+      </fr-tile>
+      <fr-tile href="#" title-type="h3" titre="Mon titre h3">
+        <p slot="desc">La description de ma tuile: tuile verticale sans image</p>
+      </fr-tile>
+      <fr-tile href="#" title-type="h2" titre="Tuile sans contenu ni image"> </fr-tile>
+
+      <!-- <fr-header>
+        <fr-logo slot="logo"></fr-logo>
+
+        <fr-header-service slot="header-service">
+          <p slot="title">Nom du site / service</p>
+          <p>Délégation à la transformation numérique</p>
+        </fr-header-service>
+
+        <fr-header-tools-links slot="header-tools-links">
+          <fr-link href="#">
+            Créer un espace
+            <fr-icon name="add-circle-line"></fr-icon>
+          </fr-link>
+          <fr-link href="#">
+            Se connecter
+            <fr-icon name="lock-line"></fr-icon>
+          </fr-link>
+          <fr-link href="#">
+            S’enregistrer
+            <fr-icon name="account-line"></fr-icon>
+          </fr-link>
+        </fr-header-tools-links>
+        <fr-search slot="search">
+          <fr-input type="search" label="Rechercher" placeholder="Rechercher"></fr-input>
+          <fr-btn icon-only>
+            <fr-icon name="search-line" slot="left" aria-hidden="true"></fr-icon>
+          </fr-btn>
+        </fr-search>
+      </fr-header>
+
+
+
+
+
+      <fr-header>
+        <fr-logo slot="logo"></fr-logo>
+
+        <fr-header-service slot="header-service">
+          <p slot="title">Nom du site / service</p>
+          <p>Délégation à la transformation numérique</p>
+        </fr-header-service>
+
+        <fr-header-tools-links slot="header-tools-links">
+          <fr-link href="#">
+            Créer un espace
+            <fr-icon name="add-circle-line"></fr-icon>
+          </fr-link>
+          <fr-link href="#">
+            Se connecter
+            <fr-icon name="lock-line"></fr-icon>
+          </fr-link>
+          <fr-link href="#">
+            S’enregistrer
+            <fr-icon name="account-line"></fr-icon>
+          </fr-link>
+        </fr-header-tools-links>
+        <fr-search slot="search">
+          <fr-input type="search" label="Rechercher" placeholder="Rechercher"></fr-input>
+          <fr-btn icon-only="">
+            <fr-icon name="search-line" slot="left" aria-hidden="true"></fr-icon>
+          </fr-btn>
+        </fr-search>
+      </fr-header>
+      <fr-header>
+        <fr-logo slot="logo"></fr-logo>
+
+        <fr-header-service slot="header-service">
+          <p slot="title">Nom du site / service</p>
+          <p>Délégation à la transformation numérique</p>
+        </fr-header-service>
+
+        <fr-header-tools-links slot="header-tools-links">
+          <fr-link href="#">
+            Créer un espace
+            <fr-icon name="add-circle-line"></fr-icon>
+          </fr-link>
+          <fr-link href="#">
+            Se connecter
+            <fr-icon name="lock-line"></fr-icon>
+          </fr-link>
+          <fr-link href="#">
+            S’enregistrer
+            <fr-icon name="account-line"></fr-icon>
+          </fr-link>
+        </fr-header-tools-links>
+
+        <fr-navigation aria-label="Menu principal" slot="navigation">
+          <a href="#">accès direct</a>
+          <a href="#">accès direct</a>
+        </fr-navigation>
+      </fr-header>
+      <fr-btn modal-opener-id="opendModal">Open modal</fr-btn>
+      <fr-modal header-modal fr-id="opendModal">
+        <fr-header-tools-links slot="header-tools-links">
+          <fr-link href="#">
+            Créer un espace
+            <fr-icon name="add-circle-line"></fr-icon>
+          </fr-link>
+          <fr-link href="#">
+            Se connecter
+            <fr-icon name="lock-line"></fr-icon>
+          </fr-link>
+          <fr-link href="#">
+            S’enregistrer
+            <fr-icon name="account-line"></fr-icon>
+          </fr-link>
+        </fr-header-tools-links>
+        <fr-navigation aria-label="Menu principal" slot="navigation">
+          <a href="#">accès direct</a>
+          <a href="#">accès direct</a>
+        </fr-navigation>
+        ></fr-modal
+      > -->
+    </fr-app>
+  </body>
+</html>

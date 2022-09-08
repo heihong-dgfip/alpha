@@ -1,0 +1,70 @@
+/*
+ * DSFR v1.0.0 | SPDX-License-Identifier: MIT | License-Filename: LICENCE.md | restricted use (see terms and conditions)
+ */
+@charset "UTF-8";
+
+/* ------------------------------------ *\
+  GRID
+\* ------------------------------------ */
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+:host {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+}
+
+:host([align="top"]) {
+  align-items: flex-start;
+}
+
+:host([align="bottom"]) {
+  align-items: flex-end;
+}
+
+:host([align="middle"]) {
+  align-items: center;
+}
+
+:host([justify="left"]) {
+  justify-content: flex-start;
+}
+
+:host([justify="right"]) {
+  justify-content: flex-end;
+}
+
+:host([justify="center"]) {
+  justify-content: center;
+}
+
+:host([gutters]) {
+  margin: -0.5rem;
+
+  ::slotted(fr-col) {
+    padding: 0.5rem;
+  }
+}
+
+:host([no-gutters]) {
+  margin: 0;
+
+  ::slotted(fr-col) {
+    padding: 0;
+  }
+}
+
+
+@media (min-width: 62em) {
+  :host([gutters]) {
+    margin: -0.75rem;
+  
+    ::slotted(fr-col) {
+      padding: 0.75rem;
+    }
+  }
+}

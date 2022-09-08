@@ -1,0 +1,241 @@
+/*
+ * DSFR v1.0.0-rc1.0 | restricted use
+ */
+ @charset "UTF-8";
+
+ /* ------------------------------------ *\
+   FORMS
+ \* ------------------------------------ */
+
+ /* ------------------------------------ *\
+  Reset
+\* ------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+*:focus,
+*:focus-visible {
+  z-index: 2000;
+}
+
+/* ------------------------------------ *\
+  Utils
+\* ------------------------------------ */
+
+.fr-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  /* added line */
+  border: 0;
+}
+
+.fr-text--regular {
+  font-weight: 400 !important;
+}
+
+/* ------------------------------------ *\
+  fr-form-group
+\* ------------------------------------ */
+
+:host {
+  display: block;
+  margin-bottom: 2rem;
+}
+
+/* ------------------------------------ *\
+  .fr-fieldset
+\* ------------------------------------ */
+
+.fr-fieldset {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  /**
+   * Modificateur pour afficher les éléments en inline
+   *//**
+   * Modificateur pour gérer l'état d'erreur
+   *//**
+   * Modificateur pour gérer l'état de validation
+   *//**
+   * Mixin disabled pour gérer l'état disabled
+   */
+}
+
+.fr-fieldset .fr-hint-text {
+  margin-bottom: 1rem;
+}
+
+.fr-fieldset__legend {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  font-weight: 700;
+}
+
+.fr-fieldset__legend .fr-hint-text {
+  margin-top: 0.5rem;
+  margin-bottom: 0;
+  font-weight: 400;
+}
+
+.fr-hint-text {
+  display: block;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.fr-hint-text {
+  color: var(--g600);
+}
+
+.fr-fieldset__content {
+  position: relative;
+}
+
+.fr-fieldset--inline .fr-fieldset__content {
+  display: flex;
+  align-items: baseline;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  margin: -0.75rem 0;
+}
+
+.fr-fieldset--error .fr-fieldset__content::before {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  bottom: 0.75rem;
+  left: -0.5rem;
+  width: 2px;
+}
+
+.fr-fieldset--valid .fr-fieldset__content::before {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  bottom: 0.75rem;
+  left: -0.5rem;
+  width: 2px;
+}
+
+.fr-fieldset {
+  color: var(--g800);
+  /**
+   * Modificateur pour gérer l'état d'erreur
+   *//**
+   * Modificateur pour gérer l'état de validation
+   */
+}
+
+.fr-fieldset--error .fr-fieldset__content::before {
+  background-color: var(--error);
+}
+
+.fr-fieldset--valid .fr-fieldset__content::before {
+  background-color: var(--success);
+}
+
+/* ------------------------------------ *\
+  checkboxes
+\* ------------------------------------ */
+
+:host([inline]) ::slotted(fr-checkbox:not([toggle])) {
+  display: inline-flex;
+  margin-bottom: 0;
+}
+
+:host([inline]) ::slotted(fr-checkbox:not([toggle]):first-of-type) {
+  margin-top: 0;
+}
+
+:host([inline]) ::slotted(fr-checkbox:not([toggle]):not(:last-of-type)) {
+  margin-right: 1.25rem;
+}
+
+:host([inline]) ::slotted(fr-checkbox:not([toggle]):last-of-type) {
+  margin-bottom: 0;
+}
+
+/* ------------------------------------ *\
+  radios
+\* ------------------------------------ */
+
+:host([inline]) ::slotted(fr-radio-group) {
+  --display: flex;
+  --align-items: baseline;
+  --justify-content: flex-start;
+  --flex-wrap: wrap;
+
+  //.fr-fieldset--inline .fr-radio-group
+  --radio-display: inline-flex;
+  //.fr-fieldset--inline .fr-radio-group:not(:last-child) input[type="radio"] + label
+  --not-last-radio-label-margin-right: 1.75rem;
+  //.fr-fieldset--inline .fr-radio-group:first-child
+  --first-radio-margin-top: 0;
+  //.fr-fieldset--inline .fr-radio-group:first-child input[type="radio"] + label
+  --first-radio-label-margin-top: 0;
+  //.fr-fieldset--inline .fr-radio-group:last-child
+  --last-radio-margin-bottom: 0;
+  //.fr-fieldset--inline .fr-radio-group:last-child input[type="radio"] + label
+  --last-radio-label-margin-bottom: 0;
+}
+
+::slotted(fr-radio-group[rich]) {
+  //.fr-fieldset .fr-radio-rich:first-child input[type="radio"] + label
+  --first-radio-label-margin-top: 0.75rem;
+  //.fr-fieldset .fr-radio-rich input[type="radio"] + label
+  --radio-label-margin-top: 0.5rem;
+  --radio-label-margin-bottom: 1rem;
+  //.fr-fieldset .fr-radio-rich:last-child input[type="radio"] + label
+  --last-radio-label-margin-bottom: 1.75rem;
+}
+
+:host([inline]) ::slotted(fr-radio-group[rich]) {
+  //.fr-fieldset--inline .fr-radio-rich:not(:last-child) input[type="radio"] + label
+  --not-last-radio-label-margin-right: 0.75rem;
+  --not-last-radio-label-margin-bottom: 0.5rem;
+  //.fr-fieldset--inline .fr-radio-rich:last-child
+  --last-radio-margin-bottom: 0;
+  //.fr-fieldset--inline .fr-radio-rich:last-child input[type="radio"] + label
+  --last-radio-label-margin-bottom: 0.75rem;
+
+  // reapply value of ::slotted(fr-radio-group[rich])
+  --first-radio-label-margin-top: 0.75rem;
+}
+
+@media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+  /**
+  * Correctif radio
+  */
+  //.fr-fieldset--inline .fr-radio-group:last-child input[type="radio"] + label[style*='background-image:'],
+  //.fr-fieldset--inline .fr-radio-group:last-child input[type="radio"] + label[class^="fr-ifi-"],
+  //.fr-fieldset--inline .fr-radio-group:last-child input[type="radio"] + label[class*=" fr-ifi-"]
+  :host([inline]) ::slotted(fr-radio-group[rich]) {
+    --last-radio-label-margin-bottom: 0.5rem !important;
+  }
+}
+
+/* ------------------------------------ *\
+  all controls
+\* ------------------------------------ */
+
+:host(.form-group-error) ::slotted(:not([slot])) {
+  --label-color: var(--error);
+}
+
+:host(.form-group-valid) ::slotted(:not([slot])) {
+  --label-color: var(--success);
+}

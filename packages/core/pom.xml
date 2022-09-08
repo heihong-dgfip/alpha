@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>fr.gouv.finances.commun</groupId>
+    <artifactId>super-pom</artifactId>
+    <version>4.0.2</version>
+  </parent>
+  <groupId>fr.gouv.finances.dsfr</groupId>
+  <artifactId>dsfr-core</artifactId>
+  <version>${dsfr-core.version}</version>
+  <name>Webjar DSFR</name>
+  <description>Webjar des composants du système de design de l'Etat.</description>
+
+  <scm>
+    <connection>${gitssh.root}/dgfip/dtnum/pole-exp-utilisateur/ux-access/dsfr.git</connection>
+    <developerConnection>${gitssh.root}/dgfip/dtnum/pole-exp-utilisateur/ux-access/dsfr.git</developerConnection>
+    <url>${gitssh.root}/inea/dgfip/dtnum/pole-exp-utilisateur/ux-access/dsfr.git</url>
+    <tag>HEAD</tag>
+  </scm>
+
+  <!-- Paramètres d'environnement -->
+  <properties>
+    <venezia.url>venezia.appli.dgfip</venezia.url>
+    <gitssh.url>ssh://${venezia.url}:9222/gitroot</gitssh.url>
+    <gitssh.root>scm:git:${gitssh.url}</gitssh.root>
+    <venezia.group_id>1186</venezia.group_id>
+
+    <webjar.directory>META-INF/resources/webjars/${project.artifactId}/${project.version}</webjar.directory>
+  </properties>
+
+  <distributionManagement>
+      <repository>
+          <id>venezia</id>
+          <name>Nexus DGFiP Releases</name>
+          <url>http://repo.appli.dgfip/nexus/content/repositories/releases/</url>
+      </repository>
+  </distributionManagement>
+
+  <build>
+    <resources>
+      <resource>
+        <directory>dist</directory>
+        <targetPath>${webjar.directory}</targetPath>
+      </resource>
+    </resources>
+  </build>
+
+</project>

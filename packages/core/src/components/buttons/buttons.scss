@@ -1,0 +1,16 @@
+@charset "UTF-8";
+
+:host {
+  div {
+    &.fr-btns-group--right {
+      text-align: right;
+    }
+    &.fr-btns-group--center {
+      text-align: center;
+    }
+    ::slotted(fr-btn) {
+      --margin-right: 1rem;
+      --margin-bottom: 1rem;
+    }
+  }
+}

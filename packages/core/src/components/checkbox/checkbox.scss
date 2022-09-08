@@ -1,0 +1,545 @@
+/*
+ * DSFR v1.0.0-rc1.0 | restricted use
+ */
+@charset "UTF-8";
+
+/* ------------------------------------ *\
+  CHECKBOXES
+\* ------------------------------------ */
+
+/* ------------------------------------ *\
+  Reset
+\* ------------------------------------ */
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+*:focus,
+*:focus-visible {
+  z-index: 2000;
+}
+
+/* ------------------------------------ *\
+  Utils
+\* ------------------------------------ */
+
+.fr-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  /* added line */
+  border: 0;
+}
+
+/* ------------------------------------ *\
+  fr-checkbox
+\* ------------------------------------ */
+
+:host {
+  /**
+   * @prop --label-color: Color of the label
+   */
+   --label-color: var(--g800);
+
+   display: block;
+}
+
+:host([toggle]) {
+  display: flex;
+}
+
+:host(:not([toggle]):first-of-type) {
+  margin-top: -0.75rem;
+}
+
+:host(:not([toggle]):last-of-type) {
+  margin-bottom: -0.75rem;
+}
+
+/* ------------------------------------ *\
+  Native input
+\* ------------------------------------ */
+
+input {
+  outline-offset: 2px;
+  outline-width: 2px;
+}
+
+input:focus {
+  outline-style: solid;
+}
+
+input:focus:not(:focus-visible) {
+  outline-style: none;
+}
+
+input:focus-visible {
+  outline-style: solid;
+}
+
+input:disabled {
+  outline-style: none;
+}
+
+input:disabled {
+  cursor: not-allowed;
+}
+
+input[type="checkbox"] + label::before, input[type="radio"] + label::before {
+  outline-offset: 2px;
+  outline-width: 2px;
+}
+
+input[type="checkbox"]:focus + label::before,
+input[type="radio"]:focus + label::before {
+  outline-style: solid;
+}
+
+input[type="checkbox"]:focus:not(:focus-visible) + label::before,
+input[type="radio"]:focus:not(:focus-visible) + label::before {
+  outline-style: none;
+}
+
+input[type="checkbox"]:focus-visible + label::before,
+input[type="radio"]:focus-visible + label::before {
+  outline-style: solid;
+}
+
+input[type="checkbox"]:enabled, input[type="checkbox"]:enabled + label,
+input[type="radio"]:enabled, input[type="radio"]:enabled + label {
+  cursor: pointer;
+}
+
+input[type="checkbox"]:disabled + label::before,
+input[type="radio"]:disabled + label::before {
+  outline-style: none;
+}
+
+input[type="checkbox"]:disabled, input[type="checkbox"]:disabled + label,
+input[type="radio"]:disabled, input[type="radio"]:disabled + label {
+  cursor: not-allowed;
+}
+
+input, select, textarea {
+  font-family: "Marianne", arial, sans-serif;
+  text-rendering: optimizeSpeed;
+}
+
+input {
+  outline-color: var(--focus);
+}
+
+input[type="checkbox"] + label::before, input[type="radio"] + label::before {
+  outline-color: var(--focus);
+}
+
+/* ------------------------------------ *\
+  fr-checkbox-group
+\* ------------------------------------ */
+
+/**
+ * L'input de type checkbox avec son label est contenu dans un groupe
+ * Ce groupe contient également les textes de validation, d'erreur et d'aide (optionnels)
+ */
+
+ .fr-checkbox-group {
+  position: relative;
+  /**
+   * On cache l'input de type checkbox pour le styler via le label
+   *//**
+   * Dans le cas d'un fieldset, on supprime l'espacement du premier groupe
+   *//**
+   * Dans le cas d'un fieldset, on supprime l'espacement du dernier groupe
+   *//**
+   * Texte de validation et d'erreur
+   *//**
+   * Modificateur de taille sm
+   *//**
+   * Modificateur pour gérer l'état erreur
+   *//**
+   * Modificateur pour gérer l'état validé
+   */
+}
+
+.fr-checkbox-group input[type="checkbox"] {
+  position: absolute;
+  opacity: 0;
+  /**
+     * On applique un display grid sur le label afin de gérer le positionnement des élements
+     */
+}
+
+.fr-checkbox-group input[type="checkbox"] + label {
+  position: relative;
+  padding: 0.75rem 0;
+  -webkit-tap-highlight-color: transparent;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  /**
+       * Style du texte d'aide dans le label
+       *//**
+       * On ajoute l'icône check-line en taille sm via un pseudo element before
+       */
+}
+
+.fr-checkbox-group input[type="checkbox"] + label .fr-hint-text {
+  margin: 0;
+  width: 100%;
+  margin-left: 2rem;
+}
+
+.fr-checkbox-group input[type="checkbox"] + label::before {
+  font: normal normal normal 1rem/1 dsfr-icons;
+  content: "";
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  border-radius: 0.25rem;
+  transition: background-color 0.1s, color 0.1s;
+}
+
+.fr-checkbox-group--sm input[type="checkbox"] + label::before {
+  width: 1rem;
+  height: 1rem;
+}
+
+.fr-checkbox-group--sm input[type="checkbox"] + label::after {
+  left: 0;
+}
+
+.fr-checkbox-group--sm input[type="checkbox"] + label .fr-hint-text {
+  margin-left: 1.5rem;
+}
+
+.fr-checkbox-group--error input[type="checkbox"] + label {
+  color: var(--error);
+}
+
+.fr-checkbox-group--error::before {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  left: -0.5rem;
+  width: 2px;
+  height: 1.5rem;
+  background-color: var(--error);
+}
+
+.fr-checkbox-group--valid input[type="checkbox"] + label {
+  color: var(--success);
+}
+
+.fr-checkbox-group--valid::before {
+  content: "";
+  position: absolute;
+  top: 0.75rem;
+  left: -0.5rem;
+  width: 2px;
+  height: 1.5rem;
+  background-color: var(--success);
+}
+
+.fr-checkbox-group input[type="checkbox"] + label::before {
+  border: 1px solid var(--g800);
+  color: var(--t-plain);
+}
+
+.fr-checkbox-group input[type="checkbox"]:checked + label::before,
+.fr-checkbox-group input[type="checkbox"]:active + label::before {
+  background-color: var(--bf500);
+  color: var(--g100);
+}
+
+.fr-checkbox-group input[type="checkbox"][disabled] + label,
+.fr-checkbox-group input[type="checkbox"]:disabled + label {
+  color: var(--g600-g400);
+}
+
+.fr-checkbox-group input[type="checkbox"][disabled] + label::before,
+.fr-checkbox-group input[type="checkbox"]:disabled + label::before {
+  background-color: var(--g200);
+  border: 1px solid var(--g400);
+}
+
+.fr-checkbox-group--error input[type="checkbox"] + label {
+  color: var(--error);
+}
+
+.fr-checkbox-group--error::before {
+  background-color: var(--error);
+}
+
+.fr-checkbox-group--valid input[type="checkbox"] + label {
+  color: var(--success);
+}
+
+.fr-checkbox-group--valid::before {
+  background-color: var(--success);
+}
+
+/* ------------------------------------ *\
+  .fr-toggle
+\* ------------------------------------ */
+
+.fr-toggle {
+  display: flex;
+  flex-wrap: wrap;
+  position: relative;
+  padding: 1rem 0;
+  /*
+   * On utilise un input de type checkbox pour gérer le toggle
+   * On reset ses styles afin de ne garder que son fonctionnement et son espacement
+   * On l'utilisera égalemement pour afficher l'état du toggle (optionnel)
+   *//*
+   * Import des modificateurs (séparateur et label à gauche)
+   *//*
+ * Passage du label ferré à gauche, le toggle ferré à droite
+ */
+}
+
+.fr-toggle__input {
+  flex-shrink: 0;
+  width: 2.5rem;
+  height: 1.5rem;
+  border: 0;
+  border-radius: 0.75rem;
+  margin: 0;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  /*
+     * On applique des styles aux pseudo-elements du label quand l'input est check.
+     * On change l'ordre du texte d'état du label dans le content pour afficher
+     * la valeur correspondant à l'état checked (optionnel).
+     *//*
+     * Hack pour IE11
+     */
+}
+
+.fr-toggle__input:checked ~ .fr-toggle__label[data-fr-unchecked-label][data-fr-checked-label]::before {
+  content: attr(data-fr-checked-label) "\a" attr(data-fr-unchecked-label);
+}
+
+.fr-toggle__input:checked ~ .fr-toggle__label::after {
+  transform: translateX(1rem);
+  text-indent: 0;
+  z-index: 2000;
+}
+
+.fr-toggle__input::-ms-check {
+  display: none;
+}
+
+.fr-toggle__label {
+  display: inline-flex;
+  flex-basis: calc(100% - 2.5rem);
+  min-height: 1.5rem;
+  padding-left: 2rem;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  /*
+     * Si les data attributes sont présents, on assigne un content au pseudo element before,
+     * et on enlève le padding left du label.
+     *//*
+     * On prévoit un pseudo-élément pour afficher l'état du bouton( optionnel)
+     * On récupère le text via l'attribut [data-fr-unchecked-label]
+     *//*
+     * On inclut l'icône check dans un pseudo-element after
+     * On la cache via un text-indent quand l'input n'est pas check
+     */
+}
+
+.fr-toggle__label[data-fr-unchecked-label][data-fr-checked-label] {
+  padding-left: 0;
+}
+
+.fr-toggle__label[data-fr-unchecked-label][data-fr-checked-label]::before {
+  content: attr(data-fr-unchecked-label) "\a" attr(data-fr-checked-label);
+}
+
+.fr-toggle__label[data-fr-unchecked-label][data-fr-checked-label] + .fr-hint-text {
+  margin-top: 0.5rem;
+}
+
+.fr-toggle__label::before {
+  flex-shrink: 0;
+  min-width: 2.5rem;
+  height: calc(1.25rem + 1px);
+  margin-top: 1.5rem;
+  margin-left: -2.5rem;
+  margin-right: 1rem;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  white-space: pre-wrap;
+  overflow: hidden;
+  outline: none !important;
+}
+
+.fr-toggle__label::after {
+  font: normal normal normal 1rem/1 dsfr-icons;
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 1rem;
+  left: 0;
+  width: 1.5rem;
+  height: 1.5rem;
+  border-radius: 50%;
+  text-indent: -9999px;
+  z-index: 1;
+}
+
+.fr-toggle .fr-hint-text {
+  display: block;
+  margin-top: 1rem;
+  margin-bottom: 0;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  flex-basis: 100%;
+}
+
+.fr-toggle--label-left .fr-toggle__input {
+  order: 1;
+  margin: 0 0 0 auto;
+}
+
+.fr-toggle--label-left .fr-toggle__input[data-fr-checked-label] ~ .fr-toggle__label {
+  padding-left: 0;
+  padding-right: 1rem;
+}
+
+.fr-toggle--label-left .fr-toggle__label {
+  justify-content: space-between;
+  padding-left: 0;
+  width: calc(100% - 2.5rem);
+}
+
+.fr-toggle--label-left .fr-toggle__label::before {
+  flex-shrink: 0;
+  order: 1;
+  margin-right: -2.5rem;
+  margin-left: 1rem;
+  text-align: right;
+}
+
+.fr-toggle--label-left .fr-toggle__label::after {
+  left: auto;
+  right: 1rem;
+}
+
+.fr-toggle--label-left .fr-hint-text {
+  order: 2;
+}
+
+.fr-toggle__input {
+  box-shadow: inset 0 0 0 1px var(--bf500);
+}
+
+input.fr-toggle__input[disabled], input.fr-toggle__input:disabled {
+  color: var(--g600-g400);
+  background-color: var(--g200);
+  box-shadow: inset 0 0 0 1px var(--g400);
+}
+
+input.fr-toggle__input[disabled] + label,
+input.fr-toggle__input:disabled + label {
+  color: var(--g600-g400);
+}
+
+input.fr-toggle__input[disabled] + label::before,
+input.fr-toggle__input:disabled + label::before {
+  color: var(--g600-g400);
+}
+
+input.fr-toggle__input[disabled] + label::before::before,
+input.fr-toggle__input:disabled + label::before::before {
+  background-color: var(--g200);
+}
+
+input.fr-toggle__input[disabled] + label::after,
+input.fr-toggle__input:disabled + label::after {
+  color: var(--g600-g400);
+  background-color: var(--g200);
+  border: 1px solid var(--g400);
+}
+
+.fr-toggle__input:checked {
+  background-color: var(--bf500);
+}
+
+.fr-toggle__label::before {
+  color: var(--bf500);
+}
+
+.fr-toggle__label::after {
+  color: var(--bf500);
+  box-shadow: inset 0 0 0 1px var(--bf500);
+  background-color: var(--w);
+}
+
+.fr-toggle .fr-hint-text {
+  color: var(--g600);
+}
+
+.fr-toggle--border-bottom {
+  box-shadow: inset 0 -1px 0 0 var(--g300);
+}
+
+/* ------------------------------------ *\
+  fr-label
+\* ------------------------------------ */
+
+.fr-label {
+  display: block;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+
+.fr-hint-text {
+  display: block;
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.fr-label {
+  color: var(--label-color);
+  /**
+   * Modificateur au niveau du label pour appliquer un état d'erreur au label
+   */
+}
+
+.fr-hint-text {
+  color: var(--g600);
+}
+
+/* ------------------------------------ *\
+  slot
+\* ------------------------------------ */
+
+::slotted(fr-error-text) {
+  --margin-top: 0.25rem;
+}
+
+::slotted(fr-valid-text) {
+  --margin-top: 0.25rem;
+}

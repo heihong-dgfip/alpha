@@ -1,0 +1,229 @@
+/*
+ * DSFR v1.0.0 | SPDX-License-Identifier: MIT | License-Filename: LICENCE.md | restricted use (see terms and conditions)
+ */
+@charset "UTF-8";
+
+*,
+::before,
+::after {
+  box-sizing: inherit;
+}
+
+.fr-footer {
+  --link-underline: none;
+  --link-blank-font: none;
+  --link-blank-content: none;
+  --ul-type: none;
+  --ol-type: none;
+  --ul-start: 0;
+  --ol-start: 0;
+  --xl-block: 0;
+  --li-bottom: 0;
+  --ol-content: none;
+  width: 100%;
+  border-top: 2px solid var(--bf500);
+  border-bottom: 1px solid var(--g400);
+  padding-top: 2.5rem;
+  /**
+   * Conteneur du bloc marque, avec le logo principal et éventuellement
+   * un logo opérateur
+   */ /**
+   * On fixe une largeur maximale pour le logo opérateur
+   */ /**
+ * La partie "content" représente les informations sous forme de texte rajoutées dans le footer
+ * ainsi que les éventuels liens simples
+ */ /**
+ * Contenu texte simple
+ */ /**
+ * Liste des liens situés en dessous de la partie texte
+ */ /**
+ * La partie "top" du footer est constituée de colonnes basées sur le système de grille du Design System
+ * Ces colonnes sont constituées d’une catégorie (optionnel) et d'une liste verticale de liens
+ */ /**
+ * Catégorie (optionnel)
+ */ /**
+ * Style de la liste
+ */ /**
+ * Style du lien
+ */ /**
+ * La partie "bottom" du footer est constituée d'une liste de liens simples (ferrée à gauche)
+ * ainsi que du copyright (ferré à droite)
+ */ /**
+ * Liste de liens avec séparateur
+ */ /**
+ * Style du lien de la liste
+ */ /**
+ * Copyright
+ */ /**
+ * La partie "partners" du footer est constituée de logos organisés
+ * en partenaires principaux (ferré à gauche) et secondaires (ferrés à droite)
+ */ /**
+ * Container des logos partenaires (principaux et secondaires)
+ */ /**
+ * Container des logos partenaires principaux
+ */ /**
+ * Container des logos partenaires secondaires
+ */
+}
+
+.fr-footer__bottom {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+  margin-top: 2.5rem;
+}
+
+.fr-footer__bottom-list {
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 0 1rem;
+  width: 100%;
+  margin: 0;
+}
+
+.fr-footer__bottom-item {
+  position: relative;
+  margin: 0.5rem 0 0 0.25rem;
+  display: inline;
+}
+
+.fr-footer__bottom-item::before {
+  content: '';
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  width: 1px;
+  height: 1rem;
+  margin-right: 0.25rem;
+  margin-bottom: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.fr-footer__bottom-item:first-child {
+  margin: 0.5rem 0 0;
+}
+
+.fr-footer__bottom-item:first-child::before {
+  content: none;
+}
+
+.fr-footer__bottom-link {
+  font-size: 0.75rem;
+  line-height: 1.25rem;
+}
+
+::slotted([slot='licence']) {
+  --link-underline: 0 1px 0 0 currentColor;
+  --link-blank-font: normal normal normal 1rem/1 dsfr-icons;
+  --link-blank-content: '\00a0';
+  font-size: 0.75rem !important;
+  line-height: 1.25rem !important;
+  margin-bottom: 1rem !important;
+  margin-top: 0.5rem !important;
+}
+
+.fr-footer {
+  border-top: 2px solid var(--bf500);
+  border-bottom: 1px solid var(--g400);
+}
+
+.fr-footer__bottom {
+  border-top: 1px solid var(--g400);
+}
+
+.fr-footer__bottom-item::before {
+  background-color: var(--g400);
+}
+
+.fr-footer__bottom-link {
+  color: var(--g600);
+  background-color: var(--t-plain);
+}
+
+::slotted([slot='licence']) {
+  color: var(--g600);
+}
+
+@media (min-width: 48em) {
+  .fr-footer__bottom-item {
+    margin: 0.5rem 0 0 0.75rem;
+  }
+
+  .fr-footer__bottom-item::before {
+    margin-right: 0.75rem;
+  }
+
+  .fr-footer__bottom-item::before {
+    margin-bottom: 0.25rem;
+  }
+
+  .fr-footer__bottom-item::before {
+    margin-top: 0.25rem;
+  }
+}
+
+/* ------------------------------------ *\
+  Native
+\* ------------------------------------ */
+
+[href] {
+  box-shadow: var(--link-underline);
+}
+
+a {
+  text-decoration: none;
+  outline-offset: 2px;
+  outline-width: 2px;
+  cursor: pointer;
+  outline-color: var(--focus);
+}
+
+a[target='_blank' i]::after {
+  font-family: icons !important;
+  font-style: normal;
+  font-weight: normal !important;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+}
+
+a:focus {
+  outline-style: solid;
+}
+
+a:focus:not(:focus-visible) {
+  outline-style: none;
+}
+
+a:focus-visible {
+  outline-style: solid;
+}
+
+a:not([href]) {
+  outline-style: none;
+  cursor: not-allowed;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  margin-block-start: var(--xl-block);
+  margin-block-end: var(--xl-block);
+  --xl-size: var(--xl-base);
+}
+
+ul {
+  list-style-type: var(--ul-type);
+  padding-inline-start: var(--ul-start);
+}
+
+ul > li::marker {
+  font-size: calc(var(--xl-size) * 0.9);
+}
+
+li {
+  --xl-base: calc(var(--xl-size) * 0.9);
+  padding-bottom: var(--li-bottom);
+}

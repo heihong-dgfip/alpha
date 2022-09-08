@@ -1,0 +1,357 @@
+/**
+ * reset
+ **/
+*,
+::after,
+::before {
+  box-sizing: inherit;
+}
+
+:host {
+  /**
+  * @prop --font-size: Font size of icon
+  */
+  --font-size: 1.5rem;
+
+  display: inline-block;
+}
+
+:host::before {
+  font: normal normal normal var(--font-size)/1 dsfr-icons;
+}
+
+:host::after {
+  font-size: var(--font-size);
+}
+
+:host([size="sm"]) {
+  --font-size: 1rem !important;
+}
+
+:host([size="lg"]) {
+  --font-size: 2rem !important;
+}
+
+/**
+ * Définitions des symboles des icones
+ **/
+
+:host([name="account-fill"])::before {
+  content: "";
+}
+
+:host([name="account-line"])::before {
+  content: "";
+}
+
+:host([name="add-circle-line"])::before {
+  content: "";
+}
+
+:host([name="add-line"])::before {
+  content: "";
+}
+
+:host([name="alert-fill"])::before {
+  content: "";
+}
+
+:host([name="alert-line"])::before {
+  content: "";
+}
+
+:host([name="arrow-down-line"])::before {
+  content: "";
+}
+
+:host([name="arrow-down-s-line"])::before {
+  content: "";
+}
+
+:host([name="arrow-left-line"])::before {
+  content: "";
+}
+
+:host([name="arrow-left-s-first-line"])::before {
+  content: "";
+}
+
+:host([name="arrow-left-s-line-double"])::before {
+  content: "";
+}
+
+:host([name="arrow-left-s-line"])::before {
+  content: "";
+}
+
+:host([name="arrow-right-line"])::before {
+  content: "";
+}
+
+:host([name="arrow-right-s-last-line"])::before {
+  content: "";
+}
+
+:host([name="arrow-right-s-line-double"])::before {
+  content: "";
+}
+
+:host([name="arrow-right-s-line"])::before {
+  content: "";
+}
+
+:host([name="arrow-right-up-line"])::before {
+  content: "";
+}
+
+:host([name="arrow-up-line"])::before {
+  content: "";
+}
+
+:host([name="arrow-up-s-line"])::before {
+  content: "";
+}
+
+:host([name="calendar-fill"])::before {
+  content: "";
+}
+
+:host([name="calendar-line"])::before {
+  content: "";
+}
+
+:host([name="check-line"])::before {
+  content: "";
+}
+
+:host([name="checkbox-circle-fill"])::before {
+  content: "";
+}
+
+:host([name="checkbox-circle-line"])::before {
+  content: "";
+}
+
+:host([name="close-circle-fill"])::before {
+  content: "";
+}
+
+:host([name="close-circle-line"])::before {
+  content: "";
+}
+
+:host([name="close-line"])::before {
+  content: "";
+}
+
+:host([name="delete-fill"])::before {
+  content: "";
+}
+
+:host([name="delete-line"])::before {
+  content: "";
+}
+
+:host([name="download-line"])::before {
+  content: "";
+}
+
+:host([name="edit-fill"])::before {
+  content: "";
+}
+
+:host([name="edit-line"])::before {
+  content: "";
+}
+
+:host([name="error-warning-fill"])::before {
+  content: "";
+}
+
+:host([name="error-warning-line"])::before {
+  content: "";
+}
+
+:host([name="external-link-line"])::before {
+  content: "";
+}
+
+:host([name="eye-line"])::before {
+  content: "";
+}
+
+:host([name="eye-off-line"])::before {
+  content: "";
+}
+
+:host([name="facebook-circle-fill"])::before {
+  content: "";
+}
+
+:host([name="file-download-fill"])::before {
+  content: "";
+}
+
+:host([name="file-download-line"])::before {
+  content: "";
+}
+
+:host([name="file-fill"])::before {
+  content: "";
+}
+
+:host([name="file-line"])::before {
+  content: "";
+}
+
+:host([name="file-pdf-fill"])::before {
+  content: "";
+}
+
+:host([name="file-pdf-line"])::before {
+  content: "";
+}
+
+:host([name="information-fill"])::before {
+  content: "";
+}
+
+:host([name="information-line"])::before {
+  content: "";
+}
+
+:host([name="instagram-fill"])::before {
+  content: "";
+}
+
+:host([name="linkedin-box-fill"])::before {
+  content: "";
+}
+
+:host([name="lock-fill"])::before {
+  content: "";
+}
+
+:host([name="lock-line"])::before {
+  content: "";
+}
+
+:host([name="mail-fill"])::before {
+  content: "";
+}
+
+:host([name="mail-line"])::before {
+  content: "";
+}
+
+:host([name="menu-2-fill"])::before {
+  content: "";
+}
+
+:host([name="menu-fill"])::before {
+  content: "";
+}
+
+:host([name="pause-circle-fill"])::before {
+  content: "";
+}
+
+:host([name="pause-circle-line"])::before {
+  content: "";
+}
+
+:host([name="play-fill"])::before {
+  content: "";
+}
+
+:host([name="play-line"])::before {
+  content: "";
+}
+
+:host([name="printer-fill"])::before {
+  content: "";
+}
+
+:host([name="printer-line"])::before {
+  content: "";
+}
+
+:host([name="question-fill"])::before {
+  content: "";
+}
+
+:host([name="question-line"])::before {
+  content: "";
+}
+
+:host([name="refresh-fill"])::before {
+  content: "";
+}
+
+:host([name="refresh-line"])::before {
+  content: "";
+}
+
+:host([name="save-fill"])::before {
+  content: "";
+}
+
+:host([name="save-line"])::before {
+  content: "";
+}
+
+:host([name="search-fill"])::before {
+  content: "";
+}
+
+:host([name="search-line"])::before {
+  content: "";
+}
+
+:host([name="subtract-line"])::before {
+  content: "";
+}
+
+:host([name="theme-fill"])::before {
+  content: "";
+}
+
+:host([name="twitter-fill"])::before {
+  content: "";
+}
+
+:host([name="user-fill"])::before {
+  content: "";
+}
+
+:host([name="user-line"])::before {
+  content: "";
+}
+
+:host([name="volume-down-fill"])::before {
+  content: "";
+}
+
+:host([name="volume-down-line"])::before {
+  content: "";
+}
+
+:host([name="volume-mute-fill"])::before {
+  content: "";
+}
+
+:host([name="volume-mute-line"])::before {
+  content: "";
+}
+
+:host([name="volume-up-fill"])::before {
+  content: "";
+}
+
+:host([name="volume-up-line"])::before {
+  content: "";
+}
+
+:host([name="youtube-fill"])::before {
+  content: "";
+}

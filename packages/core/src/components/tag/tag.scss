@@ -1,0 +1,112 @@
+/*
+ * DSFR v1.0.0 | SPDX-License-Identifier: MIT | License-Filename: LICENCE.md | restricted use (see terms and conditions)
+ */
+/* ------------------------------------ *\
+  TAGS
+\* ------------------------------------ */
+
+.fr-tag {
+  --link-underline: none;
+  --link-blank-font: none;
+  --link-blank-content: none;
+  margin: 0;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  z-index: 1;
+}
+
+.fr-tag {
+  font-size: var(--font-size, 0.875rem);
+  line-height: 1.5rem;
+  min-height: 2rem;
+  padding: 0.25rem 1rem;
+  border-radius: 1rem;
+}
+
+a.fr-tag {
+  ::slotted(fr-icon) {
+    --font-size: 1rem;
+  }
+
+  ::slotted(fr-icon[slot='left']) {
+    --font-size: 1rem;
+    margin-left: -0.25rem;
+    margin-right: 0.25rem;
+  }
+
+  ::slotted(fr-icon[slot='right']) {
+    margin-right: -0.25rem;
+    margin-left: 0.25rem;
+    --font-size: 1rem;
+  }
+}
+
+.fr-tag--sm {
+  --font-size: 0.75rem;
+  line-height: 1.25rem;
+  min-height: 1.5rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 0.75rem;
+}
+
+.fr-tag {
+  color: var(--g-800);
+  background-color: var(--g200);
+}
+
+a.fr-tag {
+  color: var(--bf500-plain);
+  background-color: var(--bf200-bf300);
+}
+
+p {
+  color: var(--g600-g400);
+  background-color: var(--g200);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  a.fr-tag:not(a):not(:disabled):hover,
+  a.fr-tag[href]:hover {
+    background-image: linear-gradient(0deg, var(--color-hover), var(--color-hover));
+  }
+
+  a.fr-tag:not(a):not(:disabled):active,
+  a.fr-tag[href]:active {
+    background-image: linear-gradient(0deg, var(--color-active), var(--color-active));
+  }
+}
+
+/* ------------------------------------ *\
+  Native link
+\* ------------------------------------ */
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+a {
+  outline-offset: 2px;
+  outline-width: 2px;
+}
+
+a:focus {
+  outline-style: solid;
+}
+
+a:focus:not(:focus-visible) {
+  outline-style: none;
+}
+
+a:focus-visible {
+  outline-style: solid;
+}
+
+a {
+  cursor: pointer;
+}
+
+a {
+  outline-color: var(--focus);
+}

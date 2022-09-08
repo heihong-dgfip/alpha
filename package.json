@@ -1,0 +1,71 @@
+{
+  "private": true,
+  "name": "dsfr",
+  "description": "Système de design de la DGFiP - mono-repo root package.json",
+  "author": "Direction Générale des Finances Publiques",
+  "license": "MIT",
+  "engines": {
+    "node": ">=14.16.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://forge.dgfip.finances.rie.gouv.fr/dgfip/dtnum/pole-exp-utilisateur/ux-access/dsfr.git"
+  },
+  "workspaces": [
+    "packages/core",
+    "packages/jsp",
+    "packages/vue"
+  ],
+  "scripts": {
+    "build": "yarn workspaces run build",
+    "test": "yarn workspaces run test",
+    "coverage": "yarn workspaces run coverage",
+    "all": "yarn workspace @dgfip/dsfr-core storybook & yarn workspace @dgfip/dsfr-core start",
+    "start": "yarn workspace @dgfip/dsfr-core start",
+    "storybook": "yarn workspace @dgfip/dsfr-core storybook",
+    "cypress-run": "yarn workspace @dgfip/dsfr-core cypress-run",
+    "cypress-open": "yarn workspace @dgfip/dsfr-core cypress-open"
+  },
+  "release": {
+    "plugins": [
+      "@semantic-release/commit-analyzer",
+      "@semantic-release/release-notes-generator",
+      "@semantic-release/changelog",
+      [
+        "@semantic-release/npm",
+        {
+          "npmPublish": false
+        }
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "package.json"
+          ]
+        }
+      ]
+    ],
+    "noCi": true
+  },
+  "devDependencies": {
+    "@babel/core": "7.16.0",
+    "@semantic-release/changelog": "5.0.1",
+    "@semantic-release/git": "9.0.0",
+    "@semantic-release/exec": "5.0.0",
+    "@storybook/addon-actions": "6.4.8",
+    "@storybook/addon-essentials": "6.4.8",
+    "@storybook/addon-links": "6.4.8",
+    "@storybook/web-components": "6.4.8",
+    "@types/jest": "26.0.24",
+    "@whitespace/storybook-addon-html": "5.0.0",
+    "babel-loader": "8.2.3",
+    "jest": "26.6.3",
+    "jest-cli": "26.6.3",
+    "lit-html": "2.0.2",
+    "multi-semantic-release": "2.8.1",
+    "semantic-release": "17.4.3",
+    "yarn": "1.22.17"
+  }
+}

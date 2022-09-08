@@ -1,0 +1,21 @@
+{
+  "name": "@dgfip/dsfr-jsp",
+  "version": "1.0.0-alpha.5",
+  "description": "démo jsp",
+  "scripts": {
+    "storybook": "start-storybook -p 6006 -s dist",
+    "build-storybook": "build-storybook",
+    "test": "echo 'no tests to execute'",
+    "build": "echo 'no build to execute'"
+  },
+  "author": "Direction Générale des Finances Publiques",
+  "license": "CeCILL",
+  "repository": {
+    "type": "git",
+    "url": "https://forge.dgfip.finances.rie.gouv.fr/dgfip/dtnum/pole-exp-utilisateur/ux-access/dsfr.git"
+  },
+  "dependencies": {
+    "@dgfip/dsfr-core": "1.0.0-alpha.6",
+    "@whitespace/storybook-addon-html": "5.0.0"
+  }
+}
